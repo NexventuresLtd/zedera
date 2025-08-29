@@ -1,7 +1,7 @@
 // components/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, ChevronDown, Waves, Zap, Shield, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,7 +93,7 @@ const Header: React.FC = () => {
     }
   };
 
-  const mobileMenuVariants = {
+  const mobileMenuVariants: Variants = {
     closed: {
       opacity: 0,
       height: 0,

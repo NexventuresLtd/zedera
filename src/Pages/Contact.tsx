@@ -2,7 +2,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
 import ContactForm from '../Components/ContactForm';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 const Contact: React.FC = () => {
   const containerVariants = {
@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants : Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
                   <Phone size={24} className="mr-4 mt-1 flex-shrink-0" style={{ color: '#1F7DAD' }} />
                   <div>
                     <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Phone & WhatsApp</h3>
-                    <p style={{ color: '#1E566C' }}>+251 XXX XXX XXX</p>
+                    <p style={{ color: '#1E566C' }}>+251 98 495 1144</p>
                     <a 
                       href="https://wa.me/251XXXXXXXXX" 
                       className="hover:underline"

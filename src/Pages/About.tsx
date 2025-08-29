@@ -1,7 +1,7 @@
 // pages/About.tsx
 import React from 'react';
 import { Target, Eye, Shield, Heart, Users, TrendingUp, DollarSign } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -53,7 +53,7 @@ const About: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
@@ -61,16 +61,6 @@ const About: React.FC = () => {
       transition: {
         duration: 0.6,
         ease: "easeOut"
-      }
-    }
-  };
-
-  const fadeInVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8
       }
     }
   };

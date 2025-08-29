@@ -1,9 +1,8 @@
 // pages/Home.tsx
 import React from 'react';
 import { ArrowRight, Code, Brain, TrendingUp, Palette, Users, DollarSign, Sparkles, Zap, Globe, Award } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import HeroSection from '../Components/HeroSection';
-import ServiceCard from '../Components/ServiceCard';
 import ClientLogos from '../Components/ClientLogos';
 
 const Home: React.FC = () => {
@@ -59,7 +58,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
@@ -71,23 +70,17 @@ const Home: React.FC = () => {
     }
   };
 
-  const cardHover = {
-    scale: 1.05,
-    y: -5,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut"
-    }
-  };
 
-  const floatingAnimation = {
+const floatingAnimation: Variants = {
+  animate: {
     y: [0, -10, 0],
     transition: {
       duration: 3,
       repeat: Infinity,
       ease: "easeInOut"
     }
-  };
+  }
+};
 
   return (
     <div className="overflow-hidden">
@@ -98,7 +91,7 @@ const Home: React.FC = () => {
         {/* Floating Background Elements */}
         <motion.div 
           className="absolute top-20 left-10 w-20 h-20 bg-[#1E566C]/10 rounded-full blur-xl"
-          animate={floatingAnimation}
+          variants={floatingAnimation}
         />
         <motion.div 
           className="absolute bottom-20 right-10 w-32 h-32 bg-[#1F7DAD]/10 rounded-full blur-xl"
@@ -172,7 +165,6 @@ const Home: React.FC = () => {
                 key={index}
                 className="text-center"
                 variants={itemVariants}
-                whileHover={cardHover}
               >
                 <motion.div 
                   className="text-[#89B8CA] mb-4 flex justify-center"
@@ -395,7 +387,7 @@ const Home: React.FC = () => {
               {/* Decorative Elements */}
               <motion.div 
                 className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-[#1F7DAD] to-[#1C478B] rounded-full opacity-20"
-                animate={floatingAnimation}
+                variants={floatingAnimation}
               />
               <motion.div 
                 className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-[#367589] to-[#5795A7] rounded-full opacity-20"

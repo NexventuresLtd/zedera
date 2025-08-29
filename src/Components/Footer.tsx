@@ -19,7 +19,7 @@ import {
   Send,
   Star,
 } from "lucide-react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation, type Variants } from "framer-motion";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
     },
   };
 
-  const waveVariants = {
+  const waveVariants: Variants = {
     animate: {
       d: [
         "M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,122.7C672,128,768,160,864,165.3C960,171,1056,149,1152,133.3C1248,117,1344,107,1392,101.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z",
@@ -351,7 +351,7 @@ const Footer: React.FC = () => {
                       <Phone size={16} className="text-white" />
                     </div>
                     <span className="text-[#89B8CA] group-hover:text-white transition-colors">
-                      +251 XXX XXX XXX
+                      +251 98 495 1144
                     </span>
                   </motion.div>
 

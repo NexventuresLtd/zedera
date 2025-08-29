@@ -3,7 +3,7 @@ import React from 'react';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import TestimonialCard from '../Components/TestimonialCard';
 import ClientLogos from '../Components/ClientLogos';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 const Portfolio: React.FC = () => {
   const caseStudies = [
@@ -61,7 +61,7 @@ const Portfolio: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,

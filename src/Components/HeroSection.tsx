@@ -14,7 +14,7 @@ import {
   Users,
   Rocket
 } from 'lucide-react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useAnimation, useInView, type Variants } from 'framer-motion';
 
 const HeroSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -79,35 +79,35 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants:Variants = {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] } // cubic-bezier for easeInOut
     }
   };
 
-  const floatingVariants = {
+  const floatingVariants:Variants = {
     animate: {
       y: [-10, 10, -10],
       rotate: [0, 5, -5, 0],
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" // Use a valid easing string
       }
     }
   };
 
-  const pulseVariants = {
+  const pulseVariants:Variants = {
     animate: {
       scale: [1, 1.1, 1],
       opacity: [0.3, 0.6, 0.3],
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: [0.42, 0, 0.58, 1] // cubic-bezier for easeInOut
       }
     }
   };
@@ -209,7 +209,7 @@ const HeroSection: React.FC = () => {
                         scale: [1, 1.05, 1],
                         filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"]
                       }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      transition={{ duration: 30, repeat: Infinity }}
                     >
                       {slides[currentSlide].subtitle}
                       <motion.div

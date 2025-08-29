@@ -1,6 +1,6 @@
 // components/TestimonialCard.tsx
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 interface TestimonialCardProps {
@@ -11,7 +11,7 @@ interface TestimonialCardProps {
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, company, image }) => {
-  const cardVariants = {
+  const cardVariants:Variants = {
     offscreen: {
       y: 50,
       opacity: 0

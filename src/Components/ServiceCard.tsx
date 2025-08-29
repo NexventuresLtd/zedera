@@ -1,7 +1,7 @@
 // components/ServiceCard.tsx
 import React from 'react';
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 interface ServiceCardProps {
   icon: ReactNode;
@@ -11,7 +11,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
   // Animation variants
-  const cardVariants = {
+  const cardVariants:Variants = {
     offscreen: {
       y: 50,
       opacity: 0
