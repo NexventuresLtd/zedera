@@ -95,7 +95,7 @@ const HeroSection: React.FC = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut" // Use a valid easing string
+        ease: "easeInOut"
       }
     }
   };
@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: [0.42, 0, 0.58, 1] // cubic-bezier for easeInOut
+        ease: [0.42, 0, 0.58, 1]
       }
     }
   };
@@ -128,16 +128,30 @@ const HeroSection: React.FC = () => {
 
   return (
     <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-      {/* Dynamic Background */}
+      {/* Fixed Dynamic Background */}
       <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <motion.div
+            key={index}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${slide.image})`,
+              opacity: index === currentSlide ? 1 : 0,
+              zIndex: 0
+            }}
+            transition={{ duration: 1.5 }}
+          />
+        ))}
+        
+        {/* Color overlay */}
         <motion.div 
-          className="absolute inset-0 bg-https://axabiztech.com/assets/img/axa-bg/tech-landscape-1.jpg bg-cover bg-center"
+          className="absolute inset-0 bg-gradient-to-br from-[#1E5556]/70 via-[#367589]/60 to-[#1C478B]/70"
           animate={{
             background: [
-              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 100%)",
-              "linear-gradient(135deg, #367589 0%, #5795A7 50%, #1F7DAD 100%)",
-              "linear-gradient(135deg, #1C478B 0%, #1E5556 50%, #367589 100%)",
-              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 100%)"
+              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 90%)",
+              "linear-gradient(135deg, #367589 0%, #5795A7 50%, #1F7DAD 90%)",
+              "linear-gradient(135deg, #1C478B 0%, #1E5556 50%, #367589 90%)",
+              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 90%)"
             ]
           }}
           transition={{ duration: 10, repeat: Infinity }}
@@ -195,12 +209,13 @@ const HeroSection: React.FC = () => {
                   key={currentSlide}
                   initial={{ x: 100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  // exit={{ x: -100, opacity: 0 }}
                   transition={{ duration: 0.8 }}
                 >
                   <motion.h1 
-                    variants={itemVariants}
-                    className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+                    initial={{y:-8}}
+                    animate={{y:0}}
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                   >
                     {slides[currentSlide].title}{" "}
                     <motion.span 
@@ -209,7 +224,7 @@ const HeroSection: React.FC = () => {
                         scale: [1, 1.05, 1],
                         filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"]
                       }}
-                      transition={{ duration: 30, repeat: Infinity }}
+                      transition={{ duration: 3, repeat: Infinity }}
                     >
                       {slides[currentSlide].subtitle}
                       <motion.div
