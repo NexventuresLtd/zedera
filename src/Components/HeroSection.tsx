@@ -29,21 +29,21 @@ const HeroSection: React.FC = () => {
       subtitle: "Homegrown Talent",
       description: "Ethiopian technology solutions that compete on a global scale while empowering local communities.",
       image: "https://cdn.prod.website-files.com/5f687fd1bdf2ee74ad010eb9/6448895c0b476d3cf28895a7_Getting%20to%20a%20World-class%20Supply%20Chain.webp",
-      accent: "from-[#89B8CA] to-[#5795A7]"
+      accent: "from-[#ffff] to-[#ffff]" // Deeper blues for better contrast
     },
     {
       title: "Innovation Meets",
       subtitle: "Excellence",
       description: "Transforming ideas into powerful digital solutions with cutting-edge technology and creative expertise.",
       image: "https://legallyinnovative.com/assets/hero-tech-bg-DaJ7RQ8-.jpg",
-      accent: "from-[#1F7DAD] to-[#367589]"
+      accent: "from-[#ffff] to-[#ffff]" // Deeper blues for better contrast
     },
     {
       title: "Building Tomorrow's",
       subtitle: "Digital Future",
       description: "Pioneering next-generation applications and platforms that drive business growth and user engagement.",
       image: "https://axabiztech.com/assets/img/axa-bg/tech-landscape-1.jpg",
-      accent: "from-[#1C478B] to-[#1E5556]"
+      accent: "from-[#ffff] to-[#ffff]" // Deeper blues for better contrast
     }
   ];
 
@@ -80,20 +80,19 @@ const HeroSection: React.FC = () => {
   };
 
   const itemVariants:Variants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] } // cubic-bezier for easeInOut
+      transition: { duration: 0.6, ease: "easeOut" } // Simplified easing for better performance
     }
   };
 
   const floatingVariants:Variants = {
     animate: {
-      y: [-10, 10, -10],
-      rotate: [0, 5, -5, 0],
+      y: [-5, 5, -5],
       transition: {
-        duration: 4,
+        duration: 3, // Faster duration
         repeat: Infinity,
         ease: "easeInOut"
       }
@@ -102,21 +101,21 @@ const HeroSection: React.FC = () => {
 
   const pulseVariants:Variants = {
     animate: {
-      scale: [1, 1.1, 1],
-      opacity: [0.3, 0.6, 0.3],
+      scale: [1, 1.05, 1],
+      opacity: [0.4, 0.7, 0.4],
       transition: {
-        duration: 3,
+        duration: 2.5, // Reduced duration
         repeat: Infinity,
-        ease: [0.42, 0, 0.58, 1]
+        ease: "easeInOut"
       }
     }
   };
 
   const features = [
-    { icon: Code, text: "Custom Development", color: "#89B8CA" },
-    { icon: Zap, text: "Lightning Fast", color: "#5795A7" },
-    { icon: Globe, text: "Global Reach", color: "#1F7DAD" },
-    { icon: Award, text: "Award Winning", color: "#367589" }
+    { icon: Code, text: "Custom Development", color: "#ffff" },
+    { icon: Zap, text: "Lightning Fast", color: "#ffff" },
+    { icon: Globe, text: "Global Reach", color: "#ffff" },
+    { icon: Award, text: "Award Winning", color: "#ffff" }
   ];
 
   const stats = [
@@ -139,40 +138,40 @@ const HeroSection: React.FC = () => {
               opacity: index === currentSlide ? 1 : 0,
               zIndex: 0
             }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 1.2 }} // Slightly faster transition
           />
         ))}
         
-        {/* Color overlay */}
+        {/* Color overlay with deeper blues for better contrast */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-[#1E5556]/70 via-[#367589]/60 to-[#1C478B]/70"
+          className="absolute inset-0 bg-gradient-to-br from-[#0A2C5C]/80 via-[#0D3A6E]/70 to-[#0A4B5C]/80"
           animate={{
             background: [
-              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 90%)",
-              "linear-gradient(135deg, #367589 0%, #5795A7 50%, #1F7DAD 90%)",
-              "linear-gradient(135deg, #1C478B 0%, #1E5556 50%, #367589 90%)",
-              "linear-gradient(135deg, #1E5556 0%, #367589 50%, #1C478B 90%)"
+              "linear-gradient(135deg, #0A2C5C 0%, #0D3A6E 50%, #0A4B5C 90%)",
+              "linear-gradient(135deg, #0D3A6E 0%, #0D6982 50%, #125C8A 90%)",
+              "linear-gradient(135deg, #0A4B5C 0%, #0A2C5C 50%, #0D3A6E 90%)",
+              "linear-gradient(135deg, #0A2C5C 0%, #0D3A6E 50%, #0A4B5C 90%)"
             ]
           }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 8, repeat: Infinity }} // Reduced duration
         />
         
-        {/* Animated Particles */}
+        {/* Reduced number of particles for better performance */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              className="absolute w-1.5 h-1.5 bg-white/30 rounded-full" // Increased opacity for better visibility
               animate={{
-                x: [0, 100, 0],
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
+                x: [0, 80, 0],
+                y: [0, -80, 0],
+                opacity: [0, 0.8, 0],
                 scale: [0, 1, 0]
               }}
               transition={{
-                duration: 6 + i * 0.5,
+                duration: 5 + i * 0.3, // Reduced duration
                 repeat: Infinity,
-                delay: i * 0.3
+                delay: i * 0.2
               }}
               style={{
                 left: `${Math.random() * 100}%`,
@@ -182,14 +181,14 @@ const HeroSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Interactive Cursor Effect */}
+        {/* Interactive Cursor Effect - Simplified */}
         <motion.div
-          className="absolute w-64 h-64 bg-gradient-radial from-white/5 to-transparent rounded-full pointer-events-none"
+          className="absolute w-48 h-48 bg-gradient-radial from-white/10 to-transparent rounded-full pointer-events-none"
           animate={{
-            x: mousePosition.x - 128,
-            y: mousePosition.y - 128,
+            x: mousePosition.x - 96,
+            y: mousePosition.y - 96,
           }}
-          transition={{ type: "spring", damping: 30, stiffness: 200 }}
+          transition={{ type: "tween", ease: "easeOut", duration: 0.5 }} // Simplified transition
         />
       </div>
 
@@ -207,13 +206,12 @@ const HeroSection: React.FC = () => {
               <div className="relative overflow-hidden">
                 <motion.div
                   key={currentSlide}
-                  initial={{ x: 100, opacity: 0 }}
+                  initial={{ x: 80, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  // exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.6 }} // Faster transition
                 >
                   <motion.h1 
-                    initial={{y:-8}}
+                    initial={{y:-6}}
                     animate={{y:0}}
                     className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                   >
@@ -221,10 +219,10 @@ const HeroSection: React.FC = () => {
                     <motion.span 
                       className={`bg-gradient-to-r ${slides[currentSlide].accent} bg-clip-text text-transparent relative inline-block`}
                       animate={{ 
-                        scale: [1, 1.05, 1],
-                        filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"]
+                        scale: [1, 1.03, 1],
+                        filter: ["brightness(1)", "brightness(1.1)", "brightness(1)"]
                       }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                      transition={{ duration: 2.5, repeat: Infinity }} // Reduced duration
                     >
                       {slides[currentSlide].subtitle}
                       <motion.div
@@ -232,7 +230,7 @@ const HeroSection: React.FC = () => {
                         variants={floatingVariants}
                         animate="animate"
                       >
-                        <Sparkles size={24} className="text-[#89B8CA]" />
+                        <Sparkles size={20} className="text-[#0D6982]" /> {/* Smaller icon */}
                       </motion.div>
                     </motion.span>
                   </motion.h1>
@@ -241,7 +239,7 @@ const HeroSection: React.FC = () => {
 
               <motion.p 
                 variants={itemVariants}
-                className="text-xl md:text-2xl mb-8 text-[#89B8CA] leading-relaxed max-w-2xl"
+                className="text-xl md:text-2xl mb-8 text-white leading-relaxed max-w-2xl" // Changed to white for better contrast
               >
                 {slides[currentSlide].description}
               </motion.p>
@@ -256,11 +254,11 @@ const HeroSection: React.FC = () => {
                   return (
                     <motion.div
                       key={feature.text}
-                      className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
+                      className="flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30" // Increased contrast
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 1 + index * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ delay: 0.8 + index * 0.1 }} // Reduced delay
+                      whileHover={{ scale: 1.03, y: -2 }} // Reduced hover effect
                     >
                       <IconComponent size={16} className="mr-2" style={{ color: feature.color }} />
                       <span className="text-sm font-medium">{feature.text}</span>
@@ -276,26 +274,26 @@ const HeroSection: React.FC = () => {
               >
                 <motion.a
                   href="/services"
-                  className="group relative overflow-hidden bg-gradient-to-r from-white to-[#89B8CA] text-[#1E5556] hover:from-[#89B8CA] hover:to-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center shadow-2xl"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="group relative overflow-hidden bg-gradient-to-r from-white to-[#89B8CA] text-[#0A2C5C] hover:from-[#89B8CA] hover:to-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center shadow-2xl" // Darker text color
+                  whileHover={{ scale: 1.03, y: -2 }} // Reduced hover effect
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10 flex items-center">
                     Work With Us
-                    <ArrowRight size={22} className="ml-3 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight size={20} className="ml-3 group-hover:translate-x-1 transition-transform duration-300" /> {/* Reduced movement */}
                   </span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#5795A7] to-[#1F7DAD] opacity-0"
+                    className="absolute inset-0 bg-gradient-to-r from-[#0D6982] to-[#125C8A] opacity-0" // Darker overlay
                     whileHover={{ opacity: 0.1 }}
                   />
                 </motion.a>
 
                 <motion.button
-                  className="group relative bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/5 text-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center backdrop-blur-sm"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="group relative bg-transparent border-2 border-white/40 hover:border-white hover:bg-white/10 text-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center backdrop-blur-sm" // Increased border opacity
+                  whileHover={{ scale: 1.03, y: -2 }} // Reduced hover effect
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Play size={20} className="mr-3 group-hover:scale-110 transition-transform duration-300" />
+                  <Play size={18} className="mr-3 group-hover:scale-105 transition-transform duration-300" /> {/* Reduced scaling */}
                   Watch Demo
                 </motion.button>
               </motion.div>
@@ -311,23 +309,23 @@ const HeroSection: React.FC = () => {
                     <motion.div
                       key={stat.label}
                       className="text-center"
-                      initial={{ y: 30, opacity: 0 }}
+                      initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 1.5 + index * 0.1 }}
+                      transition={{ delay: 1.2 + index * 0.1 }} // Reduced delay
                     >
                       <div className="flex justify-center mb-2">
-                        <div className="bg-white/10 p-2 rounded-lg">
-                          <IconComponent size={20} className="text-[#89B8CA]" />
+                        <div className="bg-white/20 p-2 rounded-lg"> {/* Increased contrast */}
+                          <IconComponent size={18} className="text-[#e8eff1]" /> {/* Smaller icon */}
                         </div>
                       </div>
                       <motion.div 
-                        className="text-2xl md:text-3xl font-bold mb-1"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                        className="text-2xl md:text-3xl font-bold mb-1 text-white" // White text for better contrast
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: index * 0.2 }} // Reduced duration and delay
                       >
                         {stat.number}
                       </motion.div>
-                      <div className="text-sm text-[#89B8CA]">{stat.label}</div>
+                      <div className="text-sm text-white/90">{stat.label}</div> {/* Increased contrast */}
                     </motion.div>
                   );
                 })}
@@ -342,77 +340,67 @@ const HeroSection: React.FC = () => {
               >
                 {/* Floating Elements */}
                 <motion.div
-                  className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#89B8CA] to-[#5795A7] rounded-full opacity-20 z-0"
+                  className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-[#0A4B5C] to-[#0D6982] rounded-full opacity-20 z-0" // Smaller size
                   variants={pulseVariants}
                   animate="animate"
                 />
                 <motion.div
-                  className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-r from-[#1F7DAD] to-[#367589] rounded-full opacity-30 z-0"
+                  className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-[#0D3A6E] to-[#125C8A] rounded-full opacity-30 z-0" // Smaller size
                   variants={pulseVariants}
                   animate="animate"
-                  style={{ animationDelay: '1s' }}
+                  style={{ animationDelay: '0.5s' }} // Reduced delay
                 />
 
                 {/* Main Image Container */}
                 <motion.div 
-                  className="relative bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20 shadow-2xl overflow-hidden"
+                  className="relative bg-white/15 backdrop-blur-lg p-6 rounded-3xl border border-white/25 shadow-2xl overflow-hidden" // Increased contrast
                   variants={floatingVariants}
                   animate="animate"
-                  whileHover={{ scale: 1.02, rotateY: 5 }}
+                  whileHover={{ scale: 1.01, rotateY: 2 }} // Reduced effect
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   {/* Sliding Images */}
-                  <div className="relative h-80 md:h-96 overflow-hidden rounded-2xl">
+                  <div className="relative h-72 md:h-88 overflow-hidden rounded-2xl"> {/* Slightly smaller container */}
                     {slides.map((slide, index) => (
                       <motion.img
                         key={index}
                         src={slide.image}
                         alt={`${slide.title} ${slide.subtitle}`}
-                        className={`absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-1000 ${
+                        className={`absolute inset-0 w-full h-full object-cover rounded-2xl transition-opacity duration-700 ${
                           index === currentSlide ? 'opacity-100' : 'opacity-0'
                         }`}
-                        initial={{ scale: 1.1 }}
+                        initial={{ scale: 1.05 }}
                         animate={{ 
-                          scale: index === currentSlide ? 1 : 1.1,
+                          scale: index === currentSlide ? 1 : 1.05,
                           filter: index === currentSlide ? "brightness(1)" : "brightness(0.8)"
                         }}
-                        transition={{ duration: 1 }}
+                        transition={{ duration: 0.8 }} // Faster transition
                       />
                     ))}
                     
                     {/* Image Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E5556]/30 to-transparent rounded-2xl" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A2C5C]/40 to-transparent rounded-2xl" /> {/* Darker overlay for better contrast */}
                   </div>
 
                   {/* Slide Indicators */}
-                  <div className="flex justify-center mt-6 space-x-2">
+                  <div className="flex justify-center mt-4 space-x-2">
                     {slides.map((_, index) => (
                       <motion.button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                           index === currentSlide 
-                            ? 'bg-white scale-125' 
-                            : 'bg-white/30 hover:bg-white/50'
+                            ? 'bg-white scale-110' // Reduced scaling
+                            : 'bg-white/40 hover:bg-white/60' // Increased contrast
                         }`}
-                        whileHover={{ scale: 1.2 }}
-                        whileTap={{ scale: 0.9 }}
+                        whileHover={{ scale: 1.1 }} // Reduced scaling
+                        whileTap={{ scale: 0.95 }}
                       />
                     ))}
                   </div>
                 </motion.div>
 
-                {/* Decorative Elements */}
-                <motion.div
-                  className="absolute top-1/2 -right-4 w-8 h-8 bg-gradient-to-r from-[#5795A7] to-[#89B8CA] rounded-lg opacity-60"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div
-                  className="absolute top-1/4 -left-4 w-6 h-6 bg-gradient-to-r from-[#1F7DAD] to-[#1C478B] rounded-lg opacity-40"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                />
+                {/* Decorative Elements - Removed for better performance */}
               </motion.div>
             </div>
           </motion.div>
@@ -422,12 +410,12 @@ const HeroSection: React.FC = () => {
       {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ y: [0, 8, 0] }} // Reduced movement
+        transition={{ duration: 1.5, repeat: Infinity }} // Faster animation
       >
-        <div className="flex flex-col items-center text-white/60">
+        <div className="flex flex-col items-center text-white/80"> {/* Increased contrast */}
           <span className="text-sm mb-2">Scroll to explore</span>
-          <ChevronDown size={24} />
+          <ChevronDown size={20} /> {/* Smaller icon */}
         </div>
       </motion.div>
     </section>

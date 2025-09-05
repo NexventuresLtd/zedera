@@ -1,6 +1,6 @@
 // components/Header.tsx
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe, ChevronDown, Waves, Zap, Shield, ArrowRight } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, ArrowRight} from 'lucide-react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 const Header: React.FC = () => {
@@ -26,31 +26,26 @@ const Header: React.FC = () => {
     { 
       name: 'Home', 
       path: '/', 
-      icon: Waves,
       hasDropdown: false 
     },
     { 
       name: 'About Us', 
       path: '/about', 
-      icon: Shield,
     hasDropdown: false 
     },
     { 
       name: 'Services', 
       path: '/services', 
-      icon: Zap,
     hasDropdown: false 
     },
     { 
       name: 'Portfolio', 
       path: '/portfolio', 
-      icon: Globe,
       hasDropdown: false 
     },
     { 
       name: 'Contact', 
       path: '/contact', 
-      icon: ArrowRight,
       hasDropdown: false 
     },
   ];
@@ -131,8 +126,8 @@ const Header: React.FC = () => {
   };
 
   const backgroundGradient = scrolled 
-    ? "bg-gradient-to-r from-white/90 via-slate-10 to-white/40 backdrop-blur-md"
-    : "bg-gradient-to-r from-white/90 via-slate-10 to-white/40 backdrop-blur-xl ";
+    ? "bg-gradient-to-r from-[#367589]/90 via-slate-10 to-[#367589]/40 backdrop-blur-md"
+    : "bg-gradient-to-r from-[#367589] via-slate-10 to-[#367589]/40 backdrop-blur-xl ";
 
   return (
     <motion.header
@@ -173,7 +168,6 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
             {navItems.map((item, index) => {
-              const IconComponent = item.icon;
               return (
                 <div key={item.name} className="relative">
                   <motion.div
@@ -188,9 +182,8 @@ const Header: React.FC = () => {
                   >
                     <a
                       href={item.path}
-                      className={`flex items-center text-[#367589] hover:text-[#1C478B] transition-all duration-300 font-medium group px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10`}
+                      className={`flex items-center text-[#fdfeff] hover:text-[#b1b3b8] transition-all duration-300 font-medium group px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10`}
                     >
-                      <IconComponent size={16} className=" group-hover:animate-pulse" />
                       <span>{item.name}</span>
                       {item.hasDropdown && (
                         <ChevronDown 
@@ -214,13 +207,13 @@ const Header: React.FC = () => {
                         >
                           <a
                             href="/services"
-                            className="block px-4 py-2 text-[#1E566C] hover:bg-[#E8F4F8] hover:text-[#10478B] transition-colors duration-200"
+                            className="block px-4 py-2 text-[#bcccd3] hover:bg-[#E8F4F8] hover:text-[#bccde2] transition-colors duration-200"
                           >
                             Our Services
                           </a>
                           <a
                             href="/portfolio"
-                            className="block px-4 py-2 text-[#1E566C] hover:bg-[#E8F4F8] hover:text-[#10478B] transition-colors duration-200"
+                            className="block px-4 py-2 text-[#b6d9e7] hover:bg-[#E8F4F8] hover:text-[#d5e2f1] transition-colors duration-200"
                           >
                             Portfolio
                           </a>
@@ -237,7 +230,7 @@ const Header: React.FC = () => {
             {/* Language Toggle */}
             <motion.button
               onClick={toggleLanguage}
-              className="hidden md:flex items-center text-[#367589] hover:text-[#1C478B] transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10"
+              className="hidden md:flex items-center text-[#dde6e9] hover:text-[#cdd6e4] transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -268,7 +261,7 @@ const Header: React.FC = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-2 rounded-lg text-[#367589] hover:text-[#1C478B] hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10 transition-all duration-300"
+              className="lg:hidden p-2 rounded-lg text-[#dce6e9] hover:text-[#d0d6df] hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10 transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -313,7 +306,6 @@ const Header: React.FC = () => {
               <div className="bg-gradient-to-br from-[#89B8CA]/5 to-[#1F7DAD]/5 rounded-xl p-2 backdrop-blur-sm">
                 <div className="flex flex-col space-y-1">
                   {navItems.map((item, index) => {
-                    const IconComponent = item.icon;
                     return (
                       <motion.a
                         key={item.name}
@@ -322,11 +314,10 @@ const Header: React.FC = () => {
                         initial="closed"
                         animate="open"
                         custom={index}
-                        className="flex items-center text-[#367589] hover:text-[#1C478B] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/20 hover:to-[#1F7DAD]/20"
+                        className="flex items-center text-[#eef7fa] hover:text-[#d9e3f5] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/20 hover:to-[#1F7DAD]/20"
                         onClick={() => setIsMenuOpen(false)}
                         whileHover={{ x: 10 }}
                       >
-                        <IconComponent size={18} className="mr-3" />
                         <span className="font-medium">{item.name}</span>
                       </motion.a>
                     );
@@ -341,7 +332,7 @@ const Header: React.FC = () => {
                   >
                     <motion.button
                       onClick={toggleLanguage}
-                      className="flex items-center text-[#367589] hover:text-[#1C478B] transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10"
+                      className="flex items-center text-[#f7fdff] hover:text-[#ecf4ff] transition-all duration-300 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-[#89B8CA]/10 hover:to-[#1F7DAD]/10"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

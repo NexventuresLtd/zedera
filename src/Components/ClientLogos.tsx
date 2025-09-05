@@ -21,12 +21,12 @@ type ClientLogosProps = {
 };
 
 const defaultLogos: Logo[] = [
-  { name: "Client 1", image: "/landscape1.png", alt: "Client 1 logo", href: "/" },
-  { name: "Client 2", image: "/landscape1.png", alt: "Client 2 logo" },
-  { name: "Client 3", image: "/landscape1.png", alt: "Client 3 logo" },
-  { name: "Client 4", image: "/landscape1.png", alt: "Client 4 logo" },
-  { name: "Client 5", image: "/landscape1.png", alt: "Client 5 logo" },
-  { name: "Client 6", image: "/landscape1.png", alt: "Client 6 logo" }
+  { name: "Client 1", image: "/landscape.png", alt: "Client 1 logo", href: "/" },
+  { name: "Client 2", image: "/landscape.png", alt: "Client 2 logo" },
+  { name: "Client 3", image: "/landscape.png", alt: "Client 3 logo" },
+  { name: "Client 4", image: "/landscape.png", alt: "Client 4 logo" },
+  { name: "Client 5", image: "/landscape.png", alt: "Client 5 logo" },
+  { name: "Client 6", image: "/landscape.png", alt: "Client 6 logo" }
 ];
 
 const containerVariants: Variants = {
@@ -84,7 +84,7 @@ const ClientLogos: React.FC<ClientLogosProps> = ({
           <div
             className="h-16 w-32 flex items-center justify-center rounded-md p-2"
             style={{
-              backgroundColor: "#f8fafc",
+              backgroundColor: "#0A4B5D",
               border: "1px solid #89B8CA",
               boxShadow: "0 4px 6px rgba(30, 86, 108, 0.08)"
             }}

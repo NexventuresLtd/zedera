@@ -58,18 +58,18 @@ const Footer: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.08,
+        delayChildren: 0.15,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: ["easeOut"] },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -81,9 +81,9 @@ const Footer: React.FC = () => {
         "M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,122.7C672,128,768,160,864,165.3C960,171,1056,149,1152,133.3C1248,117,1344,107,1392,101.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z",
       ],
       transition: {
-        duration: 8,
+        duration: 6,
         repeat: Infinity,
-        ease: ["easeInOut"],
+        ease: "easeInOut",
       },
     },
   };
@@ -100,22 +100,22 @@ const Footer: React.FC = () => {
       {/* Scroll to top button */}
       <motion.button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 bg-gradient-to-r from-[#1F7DAD] to-[#1F7DAD] text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+        className={`fixed bottom-8 right-8 z-50 bg-gradient-to-r from-[#0D3A6E] to-[#0A4B5C] text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
           showScrollTop ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
-        whileHover={{ scale: 1.1, y: -2 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: showScrollTop ? 1 : 0 }}
       >
-        <ArrowUp size={20} />
+        <ArrowUp size={18} />
       </motion.button>
 
       <footer ref={footerRef} className="relative overflow-hidden">
         {/* Animated Wave Background */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
           <svg
-            className="relative block w-full h-16"
+            className="relative block w-full h-14"
             viewBox="0 0 1440 96"
             preserveAspectRatio="none"
           >
@@ -123,39 +123,39 @@ const Footer: React.FC = () => {
               variants={waveVariants}
               animate="animate"
               fill="url(#gradient)"
-              fillOpacity="0.8"
+              fillOpacity="0.9"
               d="M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,122.7C672,128,768,160,864,165.3C960,171,1056,149,1152,133.3C1248,117,1344,107,1392,101.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
             />
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#89B8CA" />
-                <stop offset="100%" stopColor="#89B8CA" />
+                <stop offset="0%" stopColor="#0A4B5C" />
+                <stop offset="100%" stopColor="#0D3A6E" />
               </linearGradient>
             </defs>
           </svg>
         </div>
 
         {/* Main Footer Content */}
-        <div className="bg-gradient-to-br from-[#1E5556] via-[#367589] to-[#1C478B] text-white pt-20 pb-8 relative">
-          {/* Floating Elements */}
+        <div className="bg-gradient-to-br from-[#0A2C5C] via-[#0D3A6E] to-[#0A4B5C] text-white pt-16 pb-8 relative">
+          {/* Floating Elements - Reduced for better performance */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-2 h-2 bg-white/10 rounded-full"
+                className="absolute w-1.5 h-1.5 bg-white/20 rounded-full"
                 animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.1, 0.5, 0.1],
-                  scale: [0.5, 1, 0.5],
+                  y: [0, -15, 0],
+                  opacity: [0.2, 0.6, 0.2],
+                  scale: [0.6, 0.9, 0.6],
                 }}
                 transition={{
-                  duration: 3 + i,
+                  duration: 2.5 + i,
                   repeat: Infinity,
-                  delay: i * 0.5,
+                  delay: i * 0.3,
                 }}
                 style={{
-                  left: `${10 + i * 15}%`,
-                  top: `${20 + i * 10}%`,
+                  left: `${10 + i * 20}%`,
+                  top: `${20 + i * 12}%`,
                 }}
               />
             ))}
@@ -167,7 +167,7 @@ const Footer: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate={controls}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12"
             >
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
@@ -175,60 +175,61 @@ const Footer: React.FC = () => {
                   <motion.div
                     key={stat.label}
                     variants={itemVariants}
-                    className="text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10"
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/20"
+                    whileHover={{ scale: 1.03, y: -3 }}
                   >
                     <div className="flex justify-center mb-3">
-                      <div className="bg-gradient-to-r from-[#89B8CA] to-[#5795A7] p-3 rounded-full">
-                        <IconComponent size={24} className="text-white" />
+                      <div className="bg-gradient-to-r from-[#0A4B5C] to-[#0D6982] p-2 rounded-full">
+                        <IconComponent size={20} className="text-white" />
                       </div>
                     </div>
                     <motion.div
-                      className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-[#89B8CA] bg-clip-text text-transparent"
-                      animate={{ scale: [1, 1.05, 1] }}
+                      className="text-2xl font-bold mb-2 text-white"
+                      animate={{ scale: [1, 1.03, 1] }}
                       transition={{
-                        duration: 2,
+                        duration: 1.5,
                         repeat: Infinity,
-                        delay: index * 0.2,
+                        delay: index * 0.15,
                       }}
                     >
                       {stat.number}
                     </motion.div>
-                    <div className="text-sm text-[#89B8CA]">{stat.label}</div>
+                    <div className="text-sm text-white/90">{stat.label}</div>
                   </motion.div>
                 );
               })}
             </motion.div>
 
+            {/* Main grid container - FIXED: Added motion.div wrapper */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate={controls}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-10"
             >
               {/* Company Info */}
               <motion.div variants={itemVariants} className="lg:col-span-2">
-                <div className="flex items-center mb-6">
+                <div className="flex items-center mb-5">
                   <div className="relative">
                     <img
                       src="./landscape.png"
                       alt="Zedera Logo"
-                      className="object-cover ml-16 w-20 relative z-10"
+                      className="object-cover ml-16 w-16 relative z-10"
                     />
                   </div>
                 </div>
-                <p className="mb-4 text-[#89B8CA] leading-relaxed">
+                <p className="mb-4 text-white/90 leading-relaxed">
                   World-Class Technology, Homegrown Talent. Transforming ideas
                   into digital reality with innovative solutions.
                 </p>
-                <p className="text-sm text-[#5795A7] mb-6">
+                <p className="text-sm text-white/80 mb-5">
                   Registered as Zedera PLC in Ethiopia.
                 </p>
 
                 {/* Newsletter Signup */}
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                  <h4 className="text-lg font-semibold mb-3 flex items-center">
-                    <Send size={18} className="mr-2" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                  <h4 className="text-lg font-semibold mb-3 flex items-center text-white">
+                    <Send size={16} className="mr-2" />
                     Stay Updated
                   </h4>
                   <form
@@ -240,15 +241,15 @@ const Footer: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-[#89B8CA] focus:outline-none focus:border-[#5795A7] transition-colors"
+                      className="flex-1 px-3 py-2 bg-white/15 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-[#0D6982] transition-colors"
                     />
                     <motion.button
                       type="submit"
-                      className="bg-gradient-to-r from-[#1F7DAD] to-[#1C478B] px-4 py-2 rounded-lg hover:from-[#5795A7] hover:to-[#89B8CA] transition-all duration-300"
-                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-r from-[#0D3A6E] to-[#0A4B5C] px-3 py-2 rounded-lg transition-all duration-300"
+                      whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Send size={16} />
+                      <Send size={14} />
                     </motion.button>
                   </form>
                 </div>
@@ -256,28 +257,28 @@ const Footer: React.FC = () => {
 
               {/* Quick Links */}
               <motion.div variants={itemVariants}>
-                <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <ChevronRight size={20} className="mr-2" />
+                <h3 className="text-lg font-bold mb-5 flex items-center text-white">
+                  <ChevronRight size={16} className="mr-2" />
                   Quick Links
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {["Home", "About Us", "Services", "Portfolio", "Contact"].map(
                     (link, index) => (
                       <motion.li
                         key={link}
-                        initial={{ x: -10, opacity: 0 }}
+                        initial={{ x: -8, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: index * 0.08 }}
                       >
                         <a
                           href={`/${link.toLowerCase().replace(" ", "")}`}
-                          className="flex items-center text-[#89B8CA] hover:text-white transition-all duration-300 group"
+                          className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
                         >
                           <Star
-                            size={12}
+                            size={10}
                             className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                           />
-                          <span className="group-hover:translate-x-2 transition-transform duration-300">
+                          <span className="group-hover:translate-x-1 transition-transform duration-300 text-sm">
                             {link}
                           </span>
                         </a>
@@ -289,11 +290,11 @@ const Footer: React.FC = () => {
 
               {/* Services */}
               <motion.div variants={itemVariants}>
-                <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Zap size={20} className="mr-2" />
+                <h3 className="text-lg font-bold mb-5 flex items-center text-white">
+                  <Zap size={16} className="mr-2" />
                   Services
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {[
                     "Web & App Development",
                     "AI & Automation Tools",
@@ -303,19 +304,19 @@ const Footer: React.FC = () => {
                   ].map((service, index) => (
                     <motion.li
                       key={service}
-                      initial={{ x: -10, opacity: 0 }}
+                      initial={{ x: -8, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.08 }}
                     >
                       <a
                         href="/services"
-                        className="flex items-center text-[#89B8CA] hover:text-white transition-all duration-300 group"
+                        className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
                       >
                         <Shield
-                          size={12}
+                          size={10}
                           className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                         />
-                        <span className="group-hover:translate-x-2 transition-transform duration-300 text-sm">
+                        <span className="group-hover:translate-x-1 transition-transform duration-300 text-xs">
                           {service}
                         </span>
                       </a>
@@ -324,54 +325,54 @@ const Footer: React.FC = () => {
                 </ul>
               </motion.div>
 
-              {/* Contact Info */}
+              {/* Contact Info - FIXED: Corrected structure */}
               <motion.div variants={itemVariants}>
-                <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Phone size={20} className="mr-2" />
+                <h3 className="text-lg font-bold mb-5 flex items-center text-white">
+                  <Phone size={16} className="mr-2" />
                   Contact Us
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <motion.div
                     className="flex items-start group cursor-pointer"
-                    whileHover={{ x: 5 }}
+                    whileHover={{ x: 3 }}
                   >
-                    <div className="bg-gradient-to-r from-[#89B8CA] to-[#5795A7] p-2 rounded-lg mr-3 group-hover:scale-110 transition-transform duration-300">
-                      <MapPin size={16} className="text-white" />
+                    <div className="bg-gradient-to-r from-[#0A4B5C] to-[#0D6982] p-1.5 rounded-lg mr-3 group-hover:scale-105 transition-transform duration-300">
+                      <MapPin size={14} className="text-white" />
                     </div>
-                    <span className="text-[#89B8CA] group-hover:text-white transition-colors">
+                    <span className="text-white/90 group-hover:text-white transition-colors text-sm">
                       Addis Ababa, Ethiopia
                     </span>
                   </motion.div>
 
                   <motion.div
                     className="flex items-center group cursor-pointer"
-                    whileHover={{ x: 5 }}
+                    whileHover={{ x: 3 }}
                   >
-                    <div className="bg-gradient-to-r from-[#89B8CA] to-[#5795A7] p-2 rounded-lg mr-3 group-hover:scale-110 transition-transform duration-300">
-                      <Phone size={16} className="text-white" />
+                    <div className="bg-gradient-to-r from-[#0A4B5C] to-[#0D6982] p-1.5 rounded-lg mr-3 group-hover:scale-105 transition-transform duration-300">
+                      <Phone size={14} className="text-white" />
                     </div>
-                    <span className="text-[#89B8CA] group-hover:text-white transition-colors">
+                    <span className="text-white/90 group-hover:text-white transition-colors text-sm">
                       +251 98 495 1144
                     </span>
                   </motion.div>
 
                   <motion.div
                     className="flex items-center group cursor-pointer"
-                    whileHover={{ x: 5 }}
+                    whileHover={{ x: 3 }}
                   >
-                    <div className="bg-gradient-to-r from-[#89B8CA] to-[#5795A7] p-2 rounded-lg mr-3 group-hover:scale-110 transition-transform duration-300">
-                      <Mail size={16} className="text-white" />
+                    <div className="bg-gradient-to-r from-[#0A4B5C] to-[#0D6982] p-1.5 rounded-lg mr-3 group-hover:scale-105 transition-transform duration-300">
+                      <Mail size={14} className="text-white" />
                     </div>
-                    <span className="text-[#89B8CA] group-hover:text-white transition-colors">
+                    <span className="text-white/90 group-hover:text-white transition-colors text-sm">
                       info@zedera.com
                     </span>
                   </motion.div>
                 </div>
 
                 {/* Social Links */}
-                <div className="mt-8">
-                  <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-                  <div className="flex space-x-3">
+                <div className="mt-6">
+                  <h4 className="text-base font-semibold mb-3 text-white">Follow Us</h4>
+                  <div className="flex space-x-2">
                     {[
                       { Icon: Facebook, color: "#1877F2", name: "Facebook" },
                       { Icon: Twitter, color: "#1DA1F2", name: "Twitter" },
@@ -381,15 +382,15 @@ const Footer: React.FC = () => {
                       <motion.a
                         key={name}
                         href="#"
-                        className="bg-white/10 p-3 rounded-xl hover:bg-white/20 transition-all duration-300 group border border-white/10"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="bg-white/15 p-2 rounded-lg hover:bg-white/25 transition-all duration-300 group border border-white/20"
+                        whileHover={{ scale: 1.05, y: -1 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <Icon
-                          size={20}
-                          className="text-[#89B8CA] group-hover:text-white transition-colors"
+                          size={16}
+                          className="text-white/90 group-hover:text-white transition-colors"
                           style={{
-                            filter: `drop-shadow(0 0 6px ${color}40)`,
+                            filter: `drop-shadow(0 0 4px ${color}40)`,
                           }}
                         />
                       </motion.a>
@@ -402,13 +403,13 @@ const Footer: React.FC = () => {
             {/* Bottom Section */}
             <motion.div
               variants={itemVariants}
-              className="border-t border-white/10 pt-8 text-center"
+              className="border-t border-white/20 pt-6 text-center"
             >
               <div className="flex flex-col md:flex-row justify-between items-center">
                 <motion.p
-                  className="text-sm text-[#89B8CA] mb-4 md:mb-0"
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-sm text-white/90 mb-4 md:mb-0"
+                  animate={{ opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   &copy; {new Date().getFullYear()} Zedera. All rights reserved.
                 </motion.p>
