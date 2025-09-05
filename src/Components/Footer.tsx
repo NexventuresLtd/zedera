@@ -214,7 +214,7 @@ const Footer: React.FC = () => {
                     <img
                       src="./landscape.png"
                       alt="Zedera Logo"
-                      className="object-cover ml-16 w-16 relative z-10"
+                      className="object-cover ml-16 w-16 relative z-10 scale-200"
                     />
                   </div>
                 </div>
@@ -364,7 +364,7 @@ const Footer: React.FC = () => {
                       <Mail size={14} className="text-white" />
                     </div>
                     <span className="text-white/90 group-hover:text-white transition-colors text-sm">
-                      info@zedera.com
+                      info@zederaet.com
                     </span>
                   </motion.div>
                 </div>

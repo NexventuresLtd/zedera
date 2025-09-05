@@ -161,7 +161,9 @@ const Header: React.FC = () => {
             className="flex items-center cursor-pointer"
           >
             <div className="relative">
+              <a href="/">
               <img src="./landscape.png" alt="Zedera Logo" className="scale-150 object-cover ml-4 w-18 relative z-10 text-blue" />
+              </a>
             </div>
           </motion.div>
 

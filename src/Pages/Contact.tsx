@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
                     <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Phone & WhatsApp</h3>
                     <p style={{ color: '#1E566C' }}>+251 98 495 1144</p>
                     <a 
-                      href="https://wa.me/251XXXXXXXXX" 
+                      href="https://wa.me/251984951144" 
                       className="hover:underline"
                       style={{ color: '#1F7DAD' }}
                     >
@@ -107,9 +107,9 @@ const Contact: React.FC = () => {
                   <Mail size={24} className="mr-4 mt-1 flex-shrink-0" style={{ color: '#1F7DAD' }} />
                   <div>
                     <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Email</h3>
-                    <p style={{ color: '#1E566C' }}>info@zedera.com</p>
+                    <p style={{ color: '#1E566C' }}>info@zederaet.com</p>
                     <a 
-                      href="mailto:info@zedera.com" 
+                      href="mailto:info@zederaet.com" 
                       className="hover:underline"
                       style={{ color: '#1F7DAD' }}
                     >
@@ -234,7 +234,7 @@ const Contact: React.FC = () => {
               Call Us Now
             </motion.a>
             <motion.a 
-              href="mailto:info@zedera.com" 
+              href="mailto:info@zederaet.com" 
               className="bg-transparent border-2 border-white hover:bg-white px-6 py-3 rounded-md transition-colors font-medium inline-flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
