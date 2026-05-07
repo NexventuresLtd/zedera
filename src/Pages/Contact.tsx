@@ -1,252 +1,123 @@
-// pages/Contact.tsx
-import React from 'react';
-import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
-import ContactForm from '../Components/ContactForm';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from "framer-motion";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
-const Contact: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants : Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
+export default function Contact() {
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section 
-        className="py-20 text-white"
-        style={{ backgroundColor: '#1F7DAD' }}
-      >
-        <motion.div 
-          className="container mx-auto px-4 text-center"
-          initial={{ opacity: 0, y: 20 }}
+    <main>
+      <Navbar />
+
+      <section className="hero about-hero">
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl max-w-3xl mx-auto opacity-90">
-            Let's start a conversation about how we can help your business grow.
+          <p className="tagline">Contact Zedera</p>
+
+          <h1>Let’s talk about what you want to build.</h1>
+
+          <p className="hero-text">
+            Whether it’s a website, platform, AI tool, or digital strategy, tell
+            us what you need and we’ll help you figure out the next step.
           </p>
         </motion.div>
       </section>
 
-      {/* Contact Info & Form */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="flex flex-col lg:flex-row gap-12"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Contact Information */}
-            <motion.div 
-              className="lg:w-2/5"
-              variants={itemVariants}
-            >
-              <h2 className="text-3xl font-bold mb-8" style={{ color: '#10478B' }}>Get in Touch</h2>
-              
-              <div className="space-y-6 mb-8">
-                <motion.div 
-                  className="flex items-start p-4 rounded-lg"
-                  style={{ backgroundColor: '#f8fafc', border: '1px solid #89B8CA' }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <MapPin size={24} className="mr-4 mt-1 flex-shrink-0" style={{ color: '#1F7DAD' }} />
-                  <div>
-                    <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Address</h3>
-                    <p style={{ color: '#1E566C' }}>Addis Ababa, Ethiopia</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start p-4 rounded-lg"
-                  style={{ backgroundColor: '#f8fafc', border: '1px solid #89B8CA' }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Phone size={24} className="mr-4 mt-1 flex-shrink-0" style={{ color: '#1F7DAD' }} />
-                  <div>
-                    <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Phone & WhatsApp</h3>
-                    <p style={{ color: '#1E566C' }}>+251 98 495 1144</p>
-                    <a 
-                      href="https://wa.me/251984951144" 
-                      className="hover:underline"
-                      style={{ color: '#1F7DAD' }}
-                    >
-                      Message us on WhatsApp
-                    </a>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start p-4 rounded-lg"
-                  style={{ backgroundColor: '#f8fafc', border: '1px solid #89B8CA' }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Mail size={24} className="mr-4 mt-1 flex-shrink-0" style={{ color: '#1F7DAD' }} />
-                  <div>
-                    <h3 className="text-lg font-semibold mb-1" style={{ color: '#10478B' }}>Email</h3>
-                    <p style={{ color: '#1E566C' }}>info@zederaet.com</p>
-                    <a 
-                      href="mailto:info@zederaet.com" 
-                      className="hover:underline"
-                      style={{ color: '#1F7DAD' }}
-                    >
-                      Send us an email
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div 
-                className="p-6 rounded-lg"
-                style={{ backgroundColor: '#E8F4F8', border: '1px solid #89B8CA' }}
-                variants={itemVariants}
-              >
-                <h3 className="text-lg font-semibold mb-4 flex items-center" style={{ color: '#10478B' }}>
-                  <Clock size={20} className="mr-2" style={{ color: '#1F7DAD' }} />
-                  Business Hours
-                </h3>
-                <ul className="space-y-2">
-                  {[
-                    { days: 'Monday - Friday', hours: '8:30 AM - 5:30 PM' },
-                    { days: 'Saturday', hours: '9:00 AM - 1:00 PM' },
-                    { days: 'Sunday', hours: 'Closed' }
-                  ].map((item, index) => (
-                    <li key={index} className="flex justify-between">
-                      <span style={{ color: '#1E566C' }}>{item.days}</span>
-                      <span className="font-medium" style={{ color: '#10478B' }}>{item.hours}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div 
-              className="lg:w-3/5"
-              variants={itemVariants}
-            >
-              <div 
-                className="p-8 rounded-lg shadow-sm"
-                style={{ backgroundColor: '#f8fafc', border: '1px solid #89B8CA' }}
-              >
-                <h2 className="text-2xl font-bold mb-6" style={{ color: '#10478B' }}>Send us a Message</h2>
-                <ContactForm />
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16" style={{ backgroundColor: '#f8fafc' }}>
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12"
-            style={{ color: '#10478B' }}
-            initial={{ opacity: 0, y: 20 }}
+      <section className="section">
+        <div className="contact-grid">
+          <motion.div
+            className="contact-info"
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
-            Find Us
-          </motion.h2>
-          <motion.div 
-            className="p-4 rounded-lg shadow-sm"
-            style={{ backgroundColor: 'white', border: '1px solid #89B8CA' }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="h-96 w-full rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin size={48} className="mx-auto mb-4" style={{ color: '#1F7DAD' }} />
-                <p style={{ color: '#1E566C' }}>Google Map integration would go here</p>
-                <p className="text-sm mt-2" style={{ color: '#367589' }}>Addis Ababa, Ethiopia</p>
+            <p className="tagline">Get in touch</p>
+
+            <h2>We’re ready when you are.</h2>
+
+            <p className="contact-text">
+              Send us a message with a short description of your project. It
+              does not have to be perfect — just tell us what you’re thinking,
+              and we’ll take it from there.
+            </p>
+
+            <div className="contact-details">
+              <div>
+                <span>Email</span>
+                <p>zederaet@gmail.com</p>
+              </div>
+
+              <div>
+                <span>Phone</span>
+                <p>0984951144</p>
+                <p>0921319769</p>
+              </div>
+
+              <div>
+                <span>Location</span>
+                <p>Sherifa Building / 11th Floor</p>
+              </div>
+
+              <div>
+                <span>Website</span>
+                <p>www.zederaet.com</p>
               </div>
             </div>
           </motion.div>
+
+          <motion.form
+            className="contact-form"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            action="mailto:zederaet@gmail.com"
+            method="POST"
+            encType="text/plain"
+          >
+            <input type="text" name="name" placeholder="Your Name" required />
+
+            <input type="email" name="email" placeholder="Your Email" required />
+
+            <input type="text" name="project" placeholder="What do you need help with?" />
+
+            <textarea
+              name="message"
+              placeholder="Tell us a little about the project..."
+              rows={5}
+              required
+            />
+
+            <button type="submit" className="btn primary">
+              Send Message
+            </button>
+          </motion.form>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section 
-        className="py-16 text-white"
-        style={{ backgroundColor: '#1F7DAD' }}
-      >
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            className="text-3xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Let's Build Together
-          </motion.h2>
-          <motion.p 
-            className="text-xl mb-8 max-w-2xl mx-auto opacity-90"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Ready to start your project? Contact us today and let's discuss how we can help.
-          </motion.p>
-          <motion.div 
-            className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <motion.a 
-              href="tel:+251XXXXXXXXX" 
-              className="bg-white px-6 py-3 rounded-md transition-colors font-medium inline-flex items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ color: '#1F7DAD' }}
-            >
-              <Phone size={20} className="mr-2" />
-              Call Us Now
-            </motion.a>
-            <motion.a 
-              href="mailto:info@zederaet.com" 
-              className="bg-transparent border-2 border-white hover:bg-white px-6 py-3 rounded-md transition-colors font-medium inline-flex items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Send size={20} className="mr-2" />
-              Send an Email
-            </motion.a>
-          </motion.div>
-        </div>
+      <section className="cta">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <h2>Have an idea but not a full plan yet?</h2>
+
+          <p>
+            That’s completely fine. Reach out and we’ll help you shape it.
+          </p>
+
+          <a href="mailto:zederaet@gmail.com" className="btn primary">
+            Email Zedera
+          </a>
+        </motion.div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   );
-};
-
-export default Contact;
+}

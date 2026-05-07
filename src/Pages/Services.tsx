@@ -1,316 +1,167 @@
-// pages/Services.tsx
-import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Code, Brain, TrendingUp, Palette, Users, MessageCircle, 
-  Calendar, ArrowRight, ChevronDown, ChevronUp, X 
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from "framer-motion";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
-const Services: React.FC = () => {
-  const [expandedService, setExpandedService] = useState<number | null>(null);
-  const [isProcessVisible, setIsProcessVisible] = useState(false);
-  const processRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsProcessVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (processRef.current) {
-      observer.observe(processRef.current);
-    }
-
-    return () => {
-      if (processRef.current) {
-        observer.unobserve(processRef.current);
-      }
-    };
-  }, []);
-
+export default function Services() {
   const services = [
     {
-      icon: <Code size={32} />,
-      title: 'Web & App Development',
-      description: 'Custom web and mobile applications built with cutting-edge technologies.',
-      price: 'Starting from $2,000',
-      features: ['Responsive Design', 'Cross-Platform Compatibility', 'API Integration', 'Maintenance & Support'],
-      details: 'Our development process follows agile methodologies to ensure timely delivery and maximum flexibility. We use modern frameworks like React, Vue, Angular, and React Native to build scalable applications.'
+      number: "01",
+      title: "Web & App Development",
+      desc: "We build websites and applications that are clean, responsive, and easy to manage.",
     },
     {
-      icon: <Brain size={32} />,
-      title: 'AI & Automation Tools',
-      description: 'Intelligent solutions that streamline processes and enhance decision-making.',
-      price: 'Starting from $3,500',
-      features: ['Machine Learning Models', 'Process Automation', 'Data Analytics', 'Custom AI Solutions'],
-      details: 'Leverage the power of artificial intelligence to automate repetitive tasks, gain insights from your data, and create intelligent systems that learn and adapt over time.'
+      number: "02",
+      title: "AI Tools & Automation",
+      desc: "We help businesses use AI in practical ways, like chatbots, workflow automation, and data-based tools.",
     },
     {
-      icon: <TrendingUp size={32} />,
-      title: 'Digital Marketing',
-      description: 'Data-driven strategies to grow your online presence and reach your audience.',
-      price: 'Starting from $1,000',
-      features: ['SEO Optimization', 'Social Media Management', 'Content Strategy', 'Performance Analytics'],
-      details: 'Our data-driven approach ensures that every marketing dollar is spent effectively. We focus on measurable results and continuous optimization to maximize your ROI.'
+      number: "03",
+      title: "Digital Marketing & Branding",
+      desc: "We support businesses with content, SEO, social media, campaigns, and clearer brand communication.",
     },
     {
-      icon: <Palette size={32} />,
-      title: 'UI/UX Design',
-      description: 'Beautiful, intuitive designs that provide exceptional user experiences.',
-      price: 'Starting from $1,500',
-      features: ['User Research', 'Wireframing & Prototyping', 'Visual Design', 'Usability Testing'],
-      details: 'We create designs that not only look beautiful but also function flawlessly. Our user-centered approach ensures that your customers have an exceptional experience.'
+      number: "04",
+      title: "UI / UX Design",
+      desc: "We design digital experiences that are simple to use and easy for customers to understand.",
     },
     {
-      icon: <MessageCircle size={32} />,
-      title: 'Consulting',
-      description: 'Expert advice to help you make informed technology decisions.',
-      price: 'Starting from $500',
-      features: ['Technology Assessment', 'Digital Strategy', 'Implementation Planning', 'Training & Workshops'],
-      details: 'Our consultants bring years of industry experience to help you navigate complex technology decisions and develop strategies that align with your business goals.'
+      number: "05",
+      title: "Platform Consulting",
+      desc: "We help teams make better decisions around platforms, technology choices, and digital growth.",
     },
     {
-      icon: <Users size={32} />,
-      title: 'Dedicated Teams',
-      description: 'Hire dedicated developers and designers to work exclusively on your projects.',
-      price: 'Starting from $1,500/month',
-      features: ['Flexible Engagement Models', 'Direct Communication', 'Agile Methodology', 'Regular Reporting'],
-      details: 'Extend your team with our expert developers, designers, and project managers. We integrate seamlessly with your workflow and become an extension of your team.'
-    }
+      number: "06",
+      title: "Dedicated Tech Teams",
+      desc: "We connect clients with skilled developers, designers, and AI specialists from Ethiopia and East Africa.",
+    },
   ];
-
-  const processSteps = [
-    {
-      title: 'Discovery',
-      description: 'We begin by understanding your business needs, goals, and challenges.'
-    },
-    {
-      title: 'Design',
-      description: 'We create wireframes and prototypes to visualize the solution.'
-    },
-    {
-      title: 'Build',
-      description: 'Our team develops your solution using agile methodologies.'
-    },
-    {
-      title: 'Deliver',
-      description: 'We deploy the finished product and ensure everything works perfectly.'
-    },
-    {
-      title: 'Support',
-      description: 'We provide ongoing maintenance and support to keep your solution running smoothly.'
-    }
-  ];
-
-  const toggleService = (index: number) => {
-    if (expandedService === index) {
-      setExpandedService(null);
-    } else {
-      setExpandedService(index);
-    }
-  };
 
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-[#10478B] text-white">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+    <main>
+      <Navbar />
+
+      <section className="hero about-hero">
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="container mx-auto px-4 text-center"
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Comprehensive technology solutions tailored to your business needs.
+          <p className="tagline">Our Services</p>
+
+          <h1>Practical digital services for businesses that want to grow.</h1>
+
+          <p className="hero-text">
+            From websites and apps to AI tools and digital strategy, we help
+            businesses build stronger systems and a better online presence.
           </p>
-          <motion.div 
-            className="mt-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-          >
-            <div className="w-24 h-1 bg-[#89B8CA] mx-auto"></div>
-          </motion.div>
         </motion.div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12 text-[#1E566C]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Our Service Packages
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
+      <section className="section">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <p className="tagline">What We Offer</p>
+
+          <h2>
+            Services built around real business needs, not just nice-looking
+            pages.
+          </h2>
+
+          <div className="cards">
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                className="card"
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-[#1E566C]">{service.title}</h3>
-                  <p className="text-gray-700 mb-4">{service.description}</p>
-                  <p className="text-[#1F7DAD] font-bold mb-4">{service.price}</p>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-[#367589] mb-2">What's Included:</h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <div className="text-[#1F7DAD] mr-2 mt-1">•</div>
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="flex flex-col space-y-3">
-                    <button 
-                      onClick={() => toggleService(index)}
-                      className="flex items-center justify-between text-[#1F7DAD] hover:text-[#10478B] font-medium py-2"
-                    >
-                      {expandedService === index ? 'Show Less' : 'Learn More'}
-                      {expandedService === index ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </button>
-                    
-                    <a 
-                      href="/contact" 
-                      className="bg-[#1F7DAD] hover:bg-[#10478B] text-white px-4 py-2 rounded-md transition-colors font-medium inline-flex items-center justify-center"
-                    >
-                      Request Quote
-                      <ArrowRight size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-                
-                <AnimatePresence>
-                  {expandedService === index && (
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-[#89B8CA] bg-opacity-10 p-6 border-t border-gray-200"
-                    >
-                      <p className="text-gray-700">{service.details}</p>
-                      <button 
-                        onClick={() => setExpandedService(null)}
-                        className="mt-4 text-[#1F7DAD] hover:text-[#10478B] flex items-center"
-                      >
-                        <X size={16} className="mr-1" />
-                        Close
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <span className="card-number">{service.number}</span>
+
+                <h3>{service.title}</h3>
+
+                <p>{service.desc}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* How We Work */}
-      <section ref={processRef} className="py-16 bg-[#F8FBFC]">
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12 text-[#1E566C]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Our Process
-          </motion.h2>
-          
-          <div className="relative max-w-5xl mx-auto">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#89B8CA] bg-opacity-40 hidden md:block"></div>
-            
-            <div className="space-y-12 md:space-y-0">
-              {processSteps.map((step, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: isProcessVisible ? index * 0.2 : 0 }}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-center`}
-                >
-                  <div className="md:w-1/2 mb-4 md:mb-0 md:p-8">
-                    <h3 className="text-2xl font-bold mb-2 text-[#1E566C] flex items-center">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-700">{step.description}</p>
-                  </div>
-                  
-                  <div className="md:w-1/2 flex justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#1F7DAD] text-white flex items-center justify-center font-bold text-xl relative z-10 shadow-lg">
-                      {index + 1}
-                    </div>
-                  </div>
-                  
-                  <div className="md:w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-[#10478B] text-white">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="container mx-auto px-4 text-center"
-        >
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's discuss your project and how we can help you achieve your goals.
-          </p>
-          
-          <motion.div 
-            className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <a 
-              href="/contact" 
-              className="bg-white text-[#10478B] hover:bg-gray-100 px-6 py-3 rounded-md transition-colors font-medium inline-flex items-center justify-center shadow-md hover:shadow-lg"
-            >
-              <MessageCircle size={20} className="mr-2" />
-              Book Consultation
-            </a>
-            <a 
-              href="/contact" 
-              className="bg-transparent border-2 border-white hover:bg-white hover:text-[#10478B] px-6 py-3 rounded-md transition-colors font-medium inline-flex items-center justify-center"
-            >
-              <Calendar size={20} className="mr-2" />
-              Request a Quote
-            </a>
-          </motion.div>
         </motion.div>
       </section>
-    </div>
-  );
-};
 
-export default Services;
+      <section className="section light">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <p className="tagline">How We Work</p>
+
+          <h2>We keep the process clear from the first conversation.</h2>
+
+          <div className="cards">
+            {[
+              {
+                number: "01",
+                title: "Understand",
+                desc: "We start by learning what the business needs, what the users expect, and what the solution should achieve.",
+              },
+              {
+                number: "02",
+                title: "Build",
+                desc: "We design and develop the solution with a focus on structure, usability, and performance.",
+              },
+              {
+                number: "03",
+                title: "Improve",
+                desc: "After launch, we help review, refine, and improve the product where needed.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.12 }}
+                viewport={{ once: true }}
+              >
+                <span className="card-number">{item.number}</span>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="cta">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <h2>Not sure which service you need yet?</h2>
+
+          <p>
+            That’s okay. Tell us what you’re trying to build, and we’ll help
+            you figure out the right direction.
+          </p>
+
+          <a href="/contact" className="btn primary">
+            Talk to Zedera
+          </a>
+        </motion.div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
