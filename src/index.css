@@ -95,7 +95,6 @@ main {
 }
 
 /* ================= MOBILE NAV ================= */
-
 .menu-btn {
   display: none;
   width: 34px;
@@ -134,7 +133,6 @@ main {
 }
 
 /* ================= HERO ================= */
-
 .hero {
   min-height: 100vh;
   padding: 170px 7% 110px;
@@ -148,16 +146,34 @@ main {
     var(--light);
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  left: 58%;
+  top: 28%;
+  background: radial-gradient(circle, rgba(103, 200, 183, 0.35), transparent 68%);
+  border-radius: 50%;
+  filter: blur(6px);
+  animation: moveBubbleOne 14s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .hero::after {
   content: "";
   position: absolute;
-  width: 420px;
-  height: 420px;
-  right: 8%;
-  top: 22%;
-  background: radial-gradient(circle, rgba(54, 114, 245, 0.12), transparent 65%);
+  width: 230px;
+  height: 230px;
+  right: 12%;
+  top: 35%;
+  background: radial-gradient(circle, rgba(54, 114, 245, 0.28), transparent 68%);
   border-radius: 50%;
+  filter: blur(8px);
+  animation: moveBubbleTwo 16s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: 1;
 }
 
 .about-hero {
@@ -206,7 +222,6 @@ h1 {
 }
 
 /* ================= BUTTONS ================= */
-
 .btn {
   padding: 14px 28px;
   border-radius: 999px;
@@ -243,7 +258,6 @@ h1 {
 }
 
 /* ================= SECTIONS ================= */
-
 .section {
   padding: 130px 7%;
   background: var(--white);
@@ -264,7 +278,6 @@ h1 {
 }
 
 /* ================= CARDS ================= */
-
 .cards {
   margin-top: 55px;
   display: grid;
@@ -322,10 +335,21 @@ h1 {
   z-index: 1;
 }
 
-/* ================= FIXED WHY SECTION ================= */
-
+/* ================= WHY SECTION ================= */
 .why-section {
-  background: var(--white);
+  padding-bottom: 220px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 45%,
+      #eef5f7 68%,
+      #dce8ec 82%,
+      #0f2531 100%
+    );
+
+  position: relative;
 }
 
 .why-intro {
@@ -376,8 +400,9 @@ h1 {
 }
 
 /* ================= PORTFOLIO ================= */
-
 .portfolio {
+  margin-top: -1px;
+  padding-top: 120px;
   background: var(--dark);
   color: var(--white);
 }
@@ -389,7 +414,7 @@ h1 {
 .portfolio-grid {
   margin-top: 55px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 }
 
@@ -409,22 +434,30 @@ h1 {
 }
 
 .project-image {
-  height: 220px;
-  background: linear-gradient(135deg, var(--primary), var(--blue), var(--aqua));
-  display: flex;
-  align-items: flex-end;
-  padding: 24px;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+  background: none;
+  padding: 0;
+  display: block;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
 }
 
 .project-image span {
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.project-card:hover .project-image span {
-  transform: translateY(-4px);
+  display: none;
 }
 
 .project-content {
@@ -448,7 +481,6 @@ h1 {
 }
 
 /* ================= ABOUT ================= */
-
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -468,7 +500,6 @@ h1 {
 }
 
 /* ================= CONTACT ================= */
-
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -525,7 +556,6 @@ h1 {
 }
 
 /* ================= CTA ================= */
-
 .cta {
   padding: 120px 7%;
   text-align: center;
@@ -540,7 +570,6 @@ h1 {
 }
 
 /* ================= FOOTER ================= */
-
 .footer {
   background: var(--dark);
   color: var(--white);
@@ -605,11 +634,44 @@ h1 {
   font-size: 14px;
 }
 
+/* ================= ANIMATIONS ================= */
+@keyframes moveBubbleOne {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(90px, -60px) scale(1.12);
+  }
+
+  100% {
+    transform: translate(-40px, 70px) scale(0.95);
+  }
+}
+
+@keyframes moveBubbleTwo {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-120px, 50px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(60px, -80px) scale(0.98);
+  }
+}
+
 /* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 950px) {
   .cards,
-  .portfolio-grid,
   .about-grid,
   .contact-grid,
   .footer-grid {
@@ -674,11 +736,18 @@ h1 {
     color: var(--blue);
   }
 
+  .hero::before {
+    width: 150px;
+    height: 150px;
+    left: 58%;
+    top: 22%;
+  }
+
   .hero::after {
-    width: 260px;
-    height: 260px;
-    right: -80px;
-    top: 18%;
+    width: 190px;
+    height: 190px;
+    right: -40px;
+    top: 25%;
   }
 
   h1 {
@@ -694,78 +763,17 @@ h1 {
     align-items: flex-start;
   }
 
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
   .project-image {
-    height: 180px;
+    height: 220px;
   }
 }
 
 @media (max-width: 650px) {
   .why-cards {
     grid-template-columns: 1fr;
-  }
-}
-
-/* ================= MOVING HERO BUBBLES ================= */
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  left: 58%;
-  top: 28%;
-  background: radial-gradient(circle, rgba(103, 200, 183, 0.35), transparent 68%);
-  border-radius: 50%;
-  filter: blur(6px);
-  animation: moveBubbleOne 14s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 230px;
-  height: 230px;
-  right: 12%;
-  top: 35%;
-  background: radial-gradient(circle, rgba(54, 114, 245, 0.28), transparent 68%);
-  border-radius: 50%;
-  filter: blur(8px);
-  animation: moveBubbleTwo 16s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes moveBubbleOne {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(90px, -60px) scale(1.12);
-  }
-
-  100% {
-    transform: translate(-40px, 70px) scale(0.95);
-  }
-}
-
-@keyframes moveBubbleTwo {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(-120px, 50px) scale(1.08);
-  }
-
-  100% {
-    transform: translate(60px, -80px) scale(0.98);
   }
 }

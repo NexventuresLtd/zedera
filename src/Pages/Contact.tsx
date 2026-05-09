@@ -7,7 +7,7 @@ export default function Contact() {
     <main>
       <Navbar />
 
-      <section className="hero about-hero">
+      <section className="hero about-hero contact-hero">
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 40 }}
@@ -25,11 +25,11 @@ export default function Contact() {
         </motion.div>
       </section>
 
-      <section className="section">
+      <section className="section contact-section">
         <div className="contact-grid">
           <motion.div
             className="contact-info"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
@@ -39,9 +39,9 @@ export default function Contact() {
             <h2>We’re ready when you are.</h2>
 
             <p className="contact-text">
-              Send us a message with a short description of your project. It
-              does not have to be perfect — just tell us what you’re thinking,
-              and we’ll take it from there.
+              Send us a short message about your project. It does not have to be
+              perfect  just tell us what you’re thinking, and we’ll take it
+              from there.
             </p>
 
             <div className="contact-details">
@@ -70,7 +70,7 @@ export default function Contact() {
 
           <motion.form
             className="contact-form"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
@@ -82,12 +82,16 @@ export default function Contact() {
 
             <input type="email" name="email" placeholder="Your Email" required />
 
-            <input type="text" name="project" placeholder="What do you need help with?" />
+            <input
+              type="text"
+              name="project"
+              placeholder="What do you need help with?"
+            />
 
             <textarea
               name="message"
               placeholder="Tell us a little about the project..."
-              rows={5}
+              rows={6}
               required
             />
 
@@ -100,16 +104,14 @@ export default function Contact() {
 
       <section className="cta">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
           <h2>Have an idea but not a full plan yet?</h2>
 
-          <p>
-            That’s completely fine. Reach out and we’ll help you shape it.
-          </p>
+          <p>That’s completely fine. Reach out and we’ll help you shape it.</p>
 
           <a href="mailto:zederaet@gmail.com" className="btn primary">
             Email Zedera

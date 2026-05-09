@@ -45,27 +45,34 @@ export default function Home() {
   ];
 
   const projectAreas = [
-    {
-      title: "Business Websites",
-      category: "Web Development",
-      desc: "Clean websites for companies that need a stronger and more professional online presence.",
-    },
-    {
-      title: "Digital Platforms",
-      category: "Platforms",
-      desc: "Custom systems for learning, operations, customer access, or internal workflows.",
-    },
-    {
-      title: "AI Tools",
-      category: "AI & Automation",
-      desc: "Practical tools that help teams save time and reduce repetitive work.",
-    },
-    {
-      title: "Brand & Marketing Systems",
-      category: "Digital Branding",
-      desc: "Clearer messaging, stronger visuals, and better digital communication.",
-    },
-  ];
+  {
+    title: "Business Websites",
+    category: "Web Development",
+    image: "/project-images/business-websites.png",
+    desc: "Clean websites for companies that need a stronger and more professional online presence.",
+  },
+
+  {
+    title: "Digital Platforms",
+    category: "Platforms",
+    image: "/project-images/workspace design.png",
+    desc: "Custom systems for learning, operations, customer access, or internal workflows.",
+  },
+
+  {
+    title: "AI Tools",
+    category: "AI & Automation",
+    image: "/project-images/ai tech.png",
+    desc: "Practical tools that help teams save time and reduce repetitive work.",
+  },
+
+  {
+    title: "Brand & Marketing Systems",
+    category: "Digital Branding",
+    image: "/project-images/branding-systems.png",
+    desc: "Clearer messaging, stronger visuals, and better digital communication.",
+  },
+];
 
   return (
     <main>
@@ -190,7 +197,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="project-image">
-                  <span>{project.title}</span>
+                  <img src={project.image} alt={project.title} />
                 </div>
 
                 <div className="project-content">
